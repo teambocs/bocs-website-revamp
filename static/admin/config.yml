@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: teambocs/bocs-website-revamp
+
+media_folder: content/assets
+public: assets
+
+collections:
+  - name: blog
+    label: blog
+    folder: content/blogs
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{title}}'
+    fields:
+      - { name: date, label: 'Publish Date', widget: datetime, required: true }
+      - { name: author_name, label: 'Author Name', widget: string }
+      - {
+          name: author_profile_image,
+          label: 'Author Profile Image',
+          widget: image,
+          media_library: { config: { multiple: false } },
+        }
+      - {
+          name: cover_image,
+          label: 'Cover Image',
+          widget: image,
+          media_library: { config: { multiple: false } },
+        }
+      - { name: title, label: 'Title', widget: string, requried: true }
+      - { name: body, label: 'Blog Content', widget: markdown, required: true }
+      - {
+          name: tags,
+          label: 'Tags',
+          widget: list,
+          required: true,
+          hint: 'Multiple tags should be separated by comma. Example - Project Management, Construction Trends, Contract Management',
+        }
